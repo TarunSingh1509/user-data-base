@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/styleSheets/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="flex flex-col h-screen bg-gray-900">
+        <a class="text-white m-4" href="/">home Page</a>
+        <h1 class="text-white text-[40px] m-4 ">All User</h1>
+        
+        <% if (users.length>0) { %>
+            <div class="flex flex-row flex-wrap items-center">
+                <% users.forEach(user => { %>
+                <div class="h-60 w-60 mt-5 ml-5 bg-gray-600">
+                    <h1 class="text-white text-4 m-4 ">Name:  <%=user.name %></h1>
+                    <h1 class="text-white text-4 m-4 ">Email:  <%=user.email %></h1>
+                    <h1 class="text-white text-4 m-4 ">Phone:  <%=user.phone %></h1>
+                    <a class="text-red text-4 ml-4 " href="/edit/<%=user._id%>">edit</a>
+                    <a class="text-red-800 text-4 ml-4 " href="/delete/<%=user._id%>">delete</a>
+                </div>
+                <% }) %>
+            </div>
+        <% } else {%>
+            <div class="bg-red-500 text-white p-4 rounded-md m-4">
+                No users found.
+            </div>
+        <% } %>
+        
+    </div>
+</body>
+</html>
